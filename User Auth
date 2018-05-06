@@ -1,0 +1,24 @@
+
+#when running locally, otherwise we don't need sys
+import sys
+get_ipython().system('{sys.executable} -m pip install praw')
+
+
+import praw
+
+#creating user oauth for access, i trust you GREG!!!
+reddit = praw.Reddit(client_id='n8TEmySfNRevUQ', client_secret="tZc9YMHmZvnpF-BbMzNyEHw-oEc",
+                     password='zhouzhi', user_agent='testing-script by /u/notoriouspepe',
+                     username='notoriouspepe')
+
+
+#not sure if we need to use the webapp or the user for access but i'm including both inside
+reddit_app = praw.Reddit(client_id='n8TEmySfNRevUQ', client_secret="tZc9YMHmZvnpF-BbMzNyEHw-oEc",
+                         redirect_uri='http://localhost:8080',
+                         user_agent='testing-script by /u/notoriouspepe')
+
+#prints out authorization for access, because of sys it relocated to localhost so unusable
+print(reddit_app.auth.url(['identity'], '...', 'permanent'))
+
+
+
